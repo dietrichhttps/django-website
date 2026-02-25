@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Слайдер - Галерея{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    {% if items %}
+    <div class="slider-for">
+        {% for item in items %}
+        <div class="main-slide">
+            <img src="{{ item.image.url }}" alt="{{ item.title }}" data-index="{{ forloop.counter0 }}" class="clickable-image">
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="slider-nav">
+        {% for item in items %}
+        <div class="thumb-slide">
+            <img src="{{ item.image.url }}" alt="{{ item.title }}">
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        Нет изображений для отображения. Добавьте их через <a href="/admin">админ-панель</a>.
+    </div>
+    {% endif %}
+</div>
+
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <span class="lightbox-nav lightbox-prev">&lsaquo;</span>
+    <img src="" alt="" id="lightbox-image">
+    <span class="lightbox-nav lightbox-next">&rsaquo;</span>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+    });
+    
+    $('.slider-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        focusOnSelect: true,
+        centerMode: true,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3
+                }
+            }
+        ]
+    });
+    
+    const lightbox = $('#lightbox');
+    const lightboxImg = $('#lightbox-image');
+    const images = [];
+    
+    $('.clickable-image').each(function() {
+        images.push($(this).attr('src'));
+    });
+    
+    let currentIndex = 0;
+    
+    $('.clickable-image').on('click', function() {
+        currentIndex = parseInt($(this).data('index'));
+        showLightbox(currentIndex);
+    });
+    
+    function showLightbox(index) {
+        currentIndex = index;
+        lightboxImg.attr('src', images[currentIndex]);
+        lightbox.addClass('active');
+    }
+    
+    function closeLightbox() {
+        lightbox.removeClass('active');
+    }
+    
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        lightboxImg.attr('src', images[currentIndex]);
+    }
+    
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        lightboxImg.attr('src', images[currentIndex]);
+    }
+    
+    $('.lightbox-close').on('click', closeLightbox);
+    $('.lightbox-next').on('click', nextImage);
+    $('.lightbox-prev').on('click', prevImage);
+    
+    lightbox.on('click', function(e) {
+        if (e.target === lightbox[0]) {
+            closeLightbox();
+        }
+    });
+    
+    $(document).on('keydown', function(e) {
+        if (!lightbox.hasClass('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+    });
+});
+</script>
+{% endblock %}
