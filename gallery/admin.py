@@ -1,15 +1,15 @@
 from django.contrib import admin
+from adminsortable2.admin import SortableAdminMixin
 from .models import SliderItem
 
 
 @admin.register(SliderItem)
-class SliderItemAdmin(admin.ModelAdmin):
+class SliderItemAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('admin_image', 'title', 'order')
-    list_editable = ('order',)
     list_display_links = ('title',)
     search_fields = ('title',)
     readonly_fields = ('admin_image',)
-    ordering = ('order',)
+    sortable = 'order'
 
     def admin_image(self, obj):
         if obj.image:

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'filer',
     'easy_thumbnails',
+    'adminsortable2',
     'gallery',
 ]
 

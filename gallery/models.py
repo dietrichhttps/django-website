@@ -13,6 +13,8 @@ class SliderItem(models.Model):
     )
     order = models.PositiveIntegerField(
         default=0,
+        blank=False,
+        null=False,
         verbose_name='Порядок'
     )
 
