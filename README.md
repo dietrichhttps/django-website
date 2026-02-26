@@ -49,10 +49,15 @@ python manage.py runserver
 ## Структура проекта
 
 ```
-├── gallery/          # Приложение галереи
-├── mysite/           # Настройки Django
-├── templates/        # HTML-шаблоны
-├── media/            # Загруженные изображения
-├── manage.py         # Управление Django
-└── req.pip           # Зависимости
+├── gallery/            # Приложение галереи
+├── mysite/             # Настройки Django
+├── templates/          # HTML-шаблоны
+├── media/              # Загруженные изображения
+├── venv/               # Виртуальное окружение
+├── manage.py           # Управление Django
+├── create_superuser.py # Создание суперпользователя
+├── req.pip             # Зависимости
+├── db.sqlite3          # База данных
+├── SPEC.md             # Техническое описание
+└── README.md           # Этот файл
 ```
