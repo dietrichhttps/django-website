@@ -1,8 +1,8 @@
-# Slider Gallery
+# Галерея со слайдером
 
-Django web application for photo gallery with synced slider and lightbox functionality.
+Django-приложение для фотогалереи с синхронизированным слайдером и лайтбоксом.
 
-## Setup
+## Установка
 
 ```bash
 pip install -r req.pip
@@ -10,9 +10,9 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-## Features
+## Функции
 
-- Synced slider (main photo + thumbnails)
-- Lightbox gallery
-- Admin interface for managing slider items
-- Drag&drop ordering in admin
+- Синхронизированный слайдер (основное фото + миниатюры)
+- Галерея с лайтбоксом
+- Админ-панель для управления слайдами
+- Сортировка перетаскиванием в админке
