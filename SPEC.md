@@ -1,72 +1,72 @@
-# Slider Gallery Project Specification
+# Техническое описание проекта "Галерея со слайдером"
 
-## Project Overview
-- **Project name**: Slider Gallery
-- **Type**: Django web application
-- **Core functionality**: Photo gallery with synced slider and lightbox functionality
-- **Target users**: Website administrators managing slider content via Django admin
+## Обзор проекта
+- **Название проекта**: Галерея со слайдером
+- **Тип**: Веб-приложение на Django
+- **Основная функция**: Фотогалерея с синхронизированным слайдером и лайтбоксом
+- **Целевая пользователи**: Администраторы сайта, управляющие содержимым слайдера через Django-админку
 
-## Technical Stack
+## Технический стек
 - Python 3.12
 - Django 5.2
 - MySQL
 - Bootstrap 5
 - Slick Slider
-- django-filer (image management)
-- django-admin-sortable2 (drag&drop ordering)
+- django-filer (управление изображениями)
+- django-admin-sortable2 (сортировка перетаскиванием)
 
-## UI/UX Specification
+## Структура макета
 
-### Layout Structure
-- Header: Simple navigation bar
-- Main content: Full-width synced slider (main photo + thumbnails)
-- Footer: Simple footer
+### Компоновка
+- Шапка: Простая навигационная панель
+- Основной контент: Синхронизированный слайдер на всю ширину (основное фото + миниатюры)
+- Подвал: Простой подвал
 
-### Visual Design
-- Bootstrap 5 color scheme
-- Clean, minimal design
-- Responsive breakpoints (mobile, tablet, desktop)
+### Визуальный дизайн
+- Цветовая схема Bootstrap 5
+- Чистый, минималистичный дизайн
+- Адаптивные breakpoints (мобильные, планшеты, десктопы)
 
-### Components
-1. **Main Slider** (Slick Slider - Syncing mode)
-   - Large image display (foremost)
-   - Thumbnail navigation below
-   
-2. **Lightbox Gallery**
-   - Opens on main image click
-   - Full-screen image viewing
-   - Arrow navigation between images
-   - Close button
+### Компоненты
+1. **Основной слайдер** (Slick Slider - режим синхронизации)
+   - Большое изображение (основное)
+   - Навигация по миниатюрам снизу
 
-3. **Django Admin**
-   - SliderItem model management
-   - Drag&drop ordering
-   - Image preview in list
-   - Russian language interface
+2. **Галерея с лайтбоксом**
+   - Открывается при клике на основное изображение
+   - Полноэкранный просмотр изображений
+   - Навигация стрелками между изображениями
+   - Кнопка закрытия
 
-## Functionality Specification
+3. **Django-админка**
+   - Управление моделью SliderItem
+   - Сортировка перетаскиванием
+   - Превью изображений в списке
+   - Интерфейс на русском языке
 
-### Core Features
-1. Slider displays images from database
-2. Thumbnail navigation syncs with main image
-3. Click on main image opens lightbox
-4. Lightbox supports keyboard navigation (arrows, escape)
-5. Admin interface for managing slider items
-6. Drag&drop reordering in admin
+## Функциональное описание
 
-### Data Model
+### Основные функции
+1. Слайдер отображает изображения из базы данных
+2. Навигация по миниатюрам синхронизируется с основным изображением
+3. Клик по основному изображению открывает лайтбокс
+4. Лайтбокс поддерживает навигацию с клавиатуры (стрелки, escape)
+5. Админ-интерфейс для управления слайдами
+6. Сортировка перетаскиванием в админке
+
+### Модель данных
 - **SliderItem**
-  - title (CharField, Russian label: "Название")
+  - title (CharField, метка: "Название")
   - image (FilerImageField)
-  - order (PositiveIntegerField for sorting)
+  - order (PositiveIntegerField для сортировки)
 
-## Acceptance Criteria
-- [ ] Django project runs without errors
-- [ ] MySQL database connected
-- [ ] Slider displays images from database
-- [ ] Slick Slider syncing works correctly
-- [ ] Lightbox opens on image click
-- [ ] Admin shows image thumbnails
-- [ ] Drag&drop sorting works in admin
-- [ ] All labels in Russian
-- [ ] Dependencies in req.pip
+## Критерии приёмки
+- [ ] Проект Django запускается без ошибок
+- [ ] Подключена база данных MySQL
+- [ ] Слайдер отображает изображения из БД
+- [ ] Синхронизация Slick Slider работает корректно
+- [ ] Лайтбокс открывается при клике на изображение
+- [ ] Админка показывает превью изображений
+- [ ] Сортировка перетаскиванием работает в админке
+- [ ] Все метки на русском языке
+- [ ] Зависимости в req.pip
