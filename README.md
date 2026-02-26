@@ -22,13 +22,19 @@ pip install -r req.pip
 python manage.py migrate
 ```
 
-### 4. Запустить сервер
+### 4. Создать суперпользователя
+
+```bash
+python create_superuser.py
+```
+
+### 5. Запустить сервер
 
 ```bash
 python manage.py runserver
 ```
 
-### 5. Открыть в браузере
+### 6. Открыть в браузере
 
 - Главная страница: http://127.0.0.1:8000/
 - Админ-панель: http://127.0.0.1:8000/admin/
